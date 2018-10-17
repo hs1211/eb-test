@@ -6,12 +6,12 @@
 // Call the packages we need
 var express = require('express');
 var bodyParser = require('body-parser');
-var db = require(__dirname + '/models/index');
+// var db = require(__dirname + '/models/index');
 
-// Sync the database models
-db.sequelize.sync({
-  // force: true
-});
+// // Sync the database models
+// db.sequelize.sync({
+//   // force: true
+// });
 
 // Create an express app
 var app = express();
@@ -60,13 +60,6 @@ router.get('/', function (req, res) {
     message: 'Node-Express-Sequelize Server!'
   });
 });
-
-// Routes for api/inventories
-app.use('/inventories', inventoriesRouter);
-// Routes for api/products
-app.use('/products', productsRouter);
-// Routes for api/stores
-app.use('/stores', storesRouter);
 
 
 // REGISTER OUR ROUTES -------------------------------
