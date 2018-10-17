@@ -1,9 +1,5 @@
 // server.js
 
-// BASIC SETUP
-// =============================================================================
-
-// Call the packages we need
 var express = require('express');
 var bodyParser = require('body-parser');
 // var db = require(__dirname + '/models/index');
@@ -48,7 +44,6 @@ var router = express.Router();
 
 // All of our routes will console log a status
 app.use(function (req, res, next) {
-  console.log('==========================================');
   console.log(req.method + ': ' + req.url);
   next();
 });
@@ -60,18 +55,6 @@ router.get('/', function (req, res) {
     message: 'Node-Express-Sequelize Server in DEV'
   });
 });
-
-
-// REGISTER OUR ROUTES -------------------------------
-
-// All of our routes will be prefixed with /api in the future when we want to build
-// an api
-// Right now, to retrieve products, the '/products' route handles getting products 
-// and rendering the html
-// Ideally, the '/products' route would make a call to the '/api/products' route
-// which handles the databases interactions and retrieves data for the '/products'
-// route to use to use the data to render
-// app.use('/api', router);
 
 // All of our routes will be prefixed with /api
 app.use('/api', router);
