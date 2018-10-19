@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
 router.get('/', function (req, res) {
   // res.sendFile(__dirname + '/public/views/index.html');
   res.json({
-    message: 'Node-Express-Sequelize Server in DEV'
+    message: 'Node-Express-Sequelize Server in Prod'
   });
 });
 
