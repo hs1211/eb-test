@@ -1,23 +1,23 @@
 {
   "development": {
-    "database": "ENTER_DB_DEVELOPMENT_NAME",
-    "username": "",
-    "password": "",
-    "host": "localhost",
-    "dialect": "ENTER_DB_TYPE"
+    "database": "whalex",
+    "username": "admin",
+    "password": "1111",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
   "test": {
-    "database": "ENTER_DB_TEST_NAME",
-    "username": "root",
-    "password": null,
+    "database": "whalex",
+    "username": "admin",
+    "password": "1111",
     "host": "127.0.0.1",
-    "dialect": "ENTER_DB_TYPE"
+    "dialect": "mysql"
   },
   "production": {
-    "database": "ENTER_DB_PRODUCTION_NAME",
-    "username": "root",
-    "password": null,
+    "database": "whalex",
+    "username": "admin",
+    "password": "1111",
     "host": "127.0.0.1",
-    "dialect": "ENTER_DB_TYPE"
+    "dialect": "mysql"
   }
 }

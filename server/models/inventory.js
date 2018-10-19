@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Inventory = sequelize.define('Inventory', {
+  return sequelize.define('Inventory', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -25,6 +25,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-
-  return Inventory;
+  
 };

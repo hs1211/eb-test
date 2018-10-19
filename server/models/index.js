@@ -1,28 +1,28 @@
-var fs = require("fs");
-var path = require("path");
-var Sequelize = require('sequelize');
-// var environment = process.env.NODE_ENV || 'development';
-var environment = 'development';
-var config = require(__dirname + '/../../config/config.json')[environment];
+const Sequelize = require('sequelize');
+const environment = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../../config/config.json')[environment];
+const InventoryModel = require('./inventory'); 
 
-//var sequelize = new Sequelize(config.database, config.username, config.password, config);
-var db = {};
 
-// fs.readdirSync(__dirname).filter(function(file) {
-//     return (file.indexOf(".") !== 0) && (file !== "index.js");
-//   }).forEach(function(file) {
-//     var model = sequelize.import(path.join(__dirname, file));
-//     console.log('Imported ' + model.name);
-//     db[model.name] = model;
-//   });
+const sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: config.host,
+    dialect: config.dialect,
+    pool: {
+      max: 10,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
+});
 
-// Object.keys(db).forEach(function(modelName) {
-//   if ("associate" in db[modelName]) {
-//     db[modelName].associate(db);
-//   }
-// });
+//Models
+const Inventory = InventoryModel(sequelize, Sequelize)
 
-// db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
+// Sync the database models
+sequelize.sync({
+  force: true
+});
 
-module.exports = db;
+module.exports = {
+  Inventory 
+}
