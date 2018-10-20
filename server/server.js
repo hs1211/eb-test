@@ -2,7 +2,12 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-require('./models/index');
+const pretty = require('express-prettify');
+
+const models = require('./models/index');
+const main = require('./routers');
+const holiday = require('./routers/holiday');
+ 
 
 
 const app = express();
@@ -21,13 +26,10 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
+app.use(pretty({ query: 'pretty' }));
 
 // Set our port
 const port = process.env.PORT || 8080;
-
-// ROUTES FOR OUR API
-// =============================================================================
-const router = express.Router();
 
 // All of our routes will console log a status
 app.use(function (req, res, next) {
@@ -35,15 +37,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-// Ideally, this route sends the index.html
-router.get('/', function (req, res) {
-  // res.sendFile(__dirname + '/public/views/index.html');
-  res.json({
-    message: 'Node-Express-Sequelize Server in Prod'
-  });
-});
 
 // All of our routes will be prefixed with /api
-app.use('/api', router);
+app.use('/api', main);
+app.use('/holiday', holiday);
 
 module.exports = app;

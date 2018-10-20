@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const environment = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../../config/config.json')[environment];
-const InventoryModel = require('./inventory'); 
+const HolidayModel = require('./holiday'); 
 
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {
@@ -15,14 +15,14 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
     }
 });
 
-//Models
-const Inventory = InventoryModel(sequelize, Sequelize)
+// Models
+const Holiday = HolidayModel(sequelize, Sequelize)
 
 // Sync the database models
-sequelize.sync({
-  force: true
-});
+// sequelize.sync({
+//   force: true
+// });
 
 module.exports = {
-  Inventory 
+  Holiday
 }
